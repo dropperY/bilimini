@@ -2,7 +2,7 @@ const ipc = require('electron').ipcRenderer;
 const remote = require('electron').remote;
 const userAgent = {
 	desktop: 'bilimini Desktop like Mozilla/233 (Chrome and Safari)',
-	mobile: 'bilimini Mobile like (iPhone or Android) whatever'
+	mobile: 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Mobile Safari/537.36'
 };
 const videoUrlPrefix = 'http://bilibili.com/video/av';
 const videoUrlPattern = /video\/av(\d+)/;
@@ -34,6 +34,12 @@ const v = new Vue({
 			this.naviGotoInputShow = true;
 			this.showNaviGotoOverlay = true;
 		},
+        // 回到主页
+        naviGoHome: function() {
+            wv.loadURL('http://bilibili.com/index.html',{
+                userAgent: userAgent.mobile
+            });
+        },
 		naviGotoHide: function() {
 			this.naviGotoInputShow = this.showNaviGotoOverlay = false;
 		},
